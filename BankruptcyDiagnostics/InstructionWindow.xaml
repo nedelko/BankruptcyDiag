@@ -1,0 +1,308 @@
+﻿<Window x:Class="BankruptcyDiagnostics.InstructionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankruptcyDiagnostics"
+        mc:Ignorable="d" SizeToContent="Width"
+        Title="Довідка" Height="300" ResizeMode="NoResize">
+    <TabControl>
+        <TabItem x:Name="Panel1">
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Height="10" Width="10" Fill="OrangeRed"/>
+                    <TextBlock Margin="3">Як користуватись</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <TabItem.Content>
+                <ScrollViewer Width="280">
+                    <StackPanel>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Як розпочати роботу в Bankruptcy Diagnostics?</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                1) Перш за все ви маєте завантажити бланк натиснувши "Скачати бланк";<LineBreak/>
+                                2) Заповнюйте бланк за звітністю вибраного підприємства;<LineBreak/>
+                                3) Завантажте заповнені бланки в додаток натиснувши "Завантажити звітність";<LineBreak/>
+                                4) Оберіть модель, за якою потрібно здійснити діагностику підприємства;<LineBreak/>
+                                5*) За бажанням збережіть результати аналізу натиснувши "Зберегти".
+                                </TextBlock>
+                            </Expander.Content>
+                        </Expander>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Правила заповнення бланку</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                Бланк заповнюється на основі Балансу, Звіту про фінансові результати та Звіту про рух грошових коштів.<LineBreak/>
+                                Будьте уважні при заповнені бланків. У випадку не заповнення ключових рядків або допущення помилки при заповнені додаток підкаже рядок з помилкою у процесі завантаження звітності, замалювавши відповідний рядок червоним кольором.<LineBreak/>
+                                Якщо у Вас немає звітності за певний період часу (наприклад, є звітність 2001, 2003, 2004 років, але немає звітності 2002 року) - додаток продовжить коректно проводити аналіз, однак прогнози будуть менш достовірними.
+                                </TextBlock>
+                            </Expander.Content>
+                        </Expander>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Завантаження заповнених бланків</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                Для завантаження заповненого бланку натисніть "Завантажити звітність". Порядок введення звітності ролі не грає.<LineBreak/>
+                                Не можна вводити звітність одного і того ж року двічі! Додаток оповістить Вас у разі допущення такої помилки.
+                                </TextBlock>
+                            </Expander.Content>
+                        </Expander>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Збереження даних аналізу</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                Задля збереження даних аналізу натисніть "Зберегти". В діалоговому вікні виберіть необхідну директорію, де буде збережений файл, та його назву.
+                                </TextBlock>
+                            </Expander.Content>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem.Content>
+        </TabItem>
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Height="10" Width="10" Fill="Green"/>
+                    <TextBlock Margin="3">Про моделі</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <TabItem.Content>
+                <ScrollViewer Width="280">
+                    <StackPanel>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Двофакторна модель</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <StackPanel>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                    Двофакторна модель оцінки ймовірності банкрутства підприємства (організації) вважається однією з найпростіших моделей. Деякі підручники приписують авторство цієї моделі Альтману і називають її Двофакторною моделлю Альтмана.
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Padding="4">
+                                    Z = 0,3877 - 1,0736×Кп + 0,0579×Кфз,
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                    де Z - показник функції;<LineBreak/>
+                                        а0 - постійний параметр;<LineBreak/>
+                                        Кп- коефіцієнт покриття (ліквідності);<LineBreak/>
+                                        Кфз - коефіцієнт фінансової залежності;<LineBreak/>
+                                        а1 і а2, - параметри, які показують ступінь впливу коефіцієнта покриття і коефіцієнта фінансової залежності на ймовірність банкрутства.<LineBreak/>
+                                        При Z = 0 маємо рівняння дискримінантної межі. Для підприємств, у яких Z = 0, ймовірність збанкрутувати дорівнює 50%. Якщо Z менше 0, то ймовірність банкрутства менша, ніж 50% і далі знижується по мірі зниження Z. Якщо Z більше 0, то ймовірність банкрутства більше 50% і зростає із зростанням Z.
+                                    </TextBlock>
+                                </StackPanel>
+                            </Expander.Content>
+                        </Expander>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Za-показник Альтмана</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <StackPanel>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        Модель Альтмана була розроблена в 1968 р., автор обстежував 66 підприємств, половина з яких збанкрутувала в період між 1946 і 1965 роками, а друга половина працювала успішно, і досліджував 22 аналітичних коефіцієнти, які могли бути корисні для прогнозування можливого банкрутства. Так, Альтман з цих показників фінансового стану відібрав п'ять найзначущіших і побудував багатофакторне регресійне рівняння. У формалізованому вигляді п’ятифакторна модель Альтмана виглядає так:
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Padding="4">
+                                        Za = 1,2×X1 + 1,4×X2 + 3,3×X3 + 0,6×X4 + 1,0×X5,
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                    де X1 – власний оборотний капітал / всього активів;<LineBreak/>
+                                        X2 – чистий прибуток / всього активів;<LineBreak/>
+                                        X3 – прибуток до виплати відсотків / всього активів;<LineBreak/>
+                                        X4 – власний капітал / зобов’язання;<LineBreak/>
+                                        X5 – чистий дохід / всього активів.<LineBreak/>
+                                    За допомогою п’ятифакторної моделі прогноз банкрутства можна встановити з точністю до 95%.
+                                    </TextBlock>
+                                </StackPanel>
+                            </Expander.Content>
+                        </Expander>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Модель Ліса</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <StackPanel>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        Модель Ліса є збалансованою, вона акцентує увагу на рівень прибутковості діяльності та рентабельність активів підприємства, а також на структуру активів та джерел їх фінансування.
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Padding="4">
+                                        Z = 0,063×X1 + 0,092×X2 + 0,057×X3 + 0,001×X4,
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        де X1 – оборотні активи/ всього активів;<LineBreak/>
+                                        X2 – операційний прибуток/ всього активів;<LineBreak/>
+                                        X3 – нерозподілений прибуток/ всього активів;<LineBreak/>
+                                        X4 – власний капітал/ зобов’язання.
+                                    </TextBlock>
+                                </StackPanel>
+                            </Expander.Content>
+                        </Expander>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Модель Таффлера</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <StackPanel>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        Модель Таффлера (Z-score або T-score) називають тестом Таффлера (R.J. Taffler) або моделлю банкрутства Таффлера - вперше була опублікована в 1977 році британським вченим Річардом Таффлером. Він розробив лінійну регресійну модель з чотирма фінансовими коефіцієнтами для оцінки фінансового стану фірм Великобританії на основі дослідження 46 компаній, які зазнали краху і 46 фінансово стійких компаній в період з 1969 по 1975 роки. Модель Таффлера має наступний вигляд:
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Padding="4">
+                                        T(Z-score) = 0,53×X1 + 0,13×X2 + 0,18×X3 + 0,16×X4,
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        де: X1=EBT/SL;<LineBreak/>
+                                        EBT- прибуток від продажів, SL (short-term liabilities) – поточні зобов’язання (до 1 року).<LineBreak/>
+                                        X2=AC/(SL+LL);<LineBreak/>
+                                        AC (current assets) – оборотні активи, SL (short-term liabilities)  – поточні зобов’язання, LL – довгострокові зобов’язання.<LineBreak/>
+                                        X3=LL/TA;<LineBreak/>
+                                        LL (long-term liabilities) – довгострокові зобов’язання, TA (total assets) – загальна сума активів.<LineBreak/>
+                                        X4=TR/TA;<LineBreak/>
+                                        TA (total assets) – загальна сума активів, TR (revenues from sales) – виручка від продаж.
+                                    </TextBlock>
+                                </StackPanel>
+                            </Expander.Content>
+                        </Expander>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Justify">Система показників діагностики<LineBreak/>банкрутства Бівера</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <StackPanel>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        В основі досліджень американського економіста Уільяма Вівера покладено 30 найчастіше вживаних у фінансовому аналізі показників. За ознакою однорідності вони були згруповані в шість груп. З кожної групи Вівер вибрав по одному найтиповішому показнику, які й склали його систему прогнозування:
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        1) відношення cash-flow до позичкового капіталу;<LineBreak/>
+                                        2) відношення чистого прибутку до валюти балансу;<LineBreak/>
+                                        3) відношення позичкового капіталу до валюти балансу;<LineBreak/>
+                                        4) відношення оборотних активів до поточних зобов'язань (показник покриття);<LineBreak/>
+                                        5) відношення робочого капіталу до валюти балансу;<LineBreak/>
+                                        6) відношення різниці між очікуваними грошовими надходженнями і поточними зобов'язаннями до витрат підприємства (без амортизації).<LineBreak/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Expander.Content>
+                        </Expander>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Дискримінантна модель Терещенка</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <StackPanel>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        Досить поширеною в Україні є діагностика банкрутства підприємства за моделлю О. Терещенка. Дана модель існує у двох варіантах. Перший - це універсальна модель, що включає 6 показників і побудована на основі даних 850 підприємств різних галузей. Друга модель містить 10 показників і враховує диференціацію підприємств за галузями. Модель О. Терещенка визначається за формулою:
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Padding="4">
+                                        Z_TEP = 1,5×X1 + 0,08×X2 + 10×X3 + 5×X4 + 0,3×X5 + 0,1×X6,
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        де Х1 - відношення грошових надходжень до зобов’язань;<LineBreak/>
+                                        Х2 - відношення валюти балансу до зобов’язань;<LineBreak/>
+                                        Х3 - відношення чистого прибутку до середньорічної суми активів;<LineBreak/>
+                                        Х4 - відношення прибутку до виручки;<LineBreak/>
+                                        Х5 - відношення виробничих запасів до виручки;<LineBreak/>
+                                        Х6 - відношення виручки до основного капіталу.
+                                    </TextBlock>
+                                </StackPanel>
+                            </Expander.Content>
+                        </Expander>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Модель Спрінгейта</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <StackPanel>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        Модель М. Спрінгейта передбачає розвиток інтегрального показника, за допомогою якого здійснюється оцінка ймовірності визнання підприємства банкрутом. Ця модель була побудована Гордоном Л. В. Спрінгейтом в університеті Симона Фрейзера в 1978 році за допомогою покрокового дискримінантного аналізу методом, який розробив Едуард І. Альтман в 1968 році. В процесі створення моделі з 19 фінансових коефіцієнтів, які вважалися найкращими, в остаточному варіанті залишилося тільки чотири. Точність даної моделі є досить високою і становить більше 90 %. В загальному модель Спрінгейта має наступний вигляд:
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Padding="4">
+                                        Z = 1,03×X1 + 3,07×X2 + 0,66×X3 + 0,4×X4,
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        де X1 – власний оборотний капітал/ всього активів;<LineBreak/>
+                                        X2 – прибуток до виплати відсотків/ всього активів;<LineBreak/>
+                                        X3 – прибуток до оподаткування/ поточні зобов’язання;<LineBreak/>
+                                        X4 – чистий дохід/ всього активів.<LineBreak/>
+                                        Якщо для підприємства критерій Z менше 0,862, то підприємство – потенційний банкрут, якщо Z більше 2,451, то загроза банкрутства мінімальна і підприємство являється фінансово надійним.
+                                    </TextBlock>
+                                </StackPanel>
+                            </Expander.Content>
+                        </Expander>
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock TextWrapping="Wrap" TextAlignment="Center">Модель Сайфуліна-Кадикова</TextBlock>
+                            </Expander.Header>
+                            <Expander.Content>
+                                <StackPanel>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        Російські вчені Сайфулін та Кадиков розробили середньострокову рейтингову модель прогнозування ризику банкрутства, яка може застосовуватися для будь-якої галузі і підприємств різного масштабу. Загальний вигляд моделі:
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Padding="4">
+                                        Zск = 2×X1 + 0,1×X2 + 0,08×X3 + 0,45×X4 + X5
+                                    </TextBlock>
+                                    <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                        де х1 – коефіцієнт забезпеченості власними коштами;<LineBreak/>
+                                        х2 – коефіцієнт поточної ліквідності;<LineBreak/>
+                                        х3 – інтенсивність обігу авансованого капіталу, яка характеризує обсяг реалізованої продукції, яка приходиться на 1 у. о. коштів, вкладених у діяльність підприємства;<LineBreak/>
+                                        х4 – коефіцієнт менеджменту, який характеризується відношенням прибутку від реалізації до величини виручки від реалізації;<LineBreak/>
+                                        х5 – рентабельність власного капіталу (відношення балансового прибутку до власного капіталу).<LineBreak/>
+                                        Якщо рейтингове число R для підприємства є більшим за 1, то підприємство знаходиться у задовільному стані, якщо менше за 1 – у незадовільному.
+                                    </TextBlock>
+                                </StackPanel>
+                            </Expander.Content>
+                        </Expander>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem.Content>
+        </TabItem>
+        <TabItem>
+            <TabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Height="10" Width="10" Fill="OrangeRed"/>
+                    <TextBlock Margin="3">Про нас</TextBlock>
+                </StackPanel>
+            </TabItem.Header>
+            <TabItem.Content>
+                <StackPanel Width="280">
+                    <Expander>
+                        <Expander.Header>
+                            <TextBlock TextWrapping="Wrap" TextAlignment="Center">ПІП автора</TextBlock>
+                        </Expander.Header>
+                        <Expander.Content>
+                            <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                Неделко Валентин Іванович - студент-магістр
+                            </TextBlock>
+                        </Expander.Content>
+                    </Expander>
+                    <Expander>
+                        <Expander.Header>
+                            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Номер телефону</TextBlock>
+                        </Expander.Header>
+                        <Expander.Content>
+                            <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                0969481807
+                            </TextBlock>
+                        </Expander.Content>
+                    </Expander>
+                    <Expander>
+                        <Expander.Header>
+                            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Адрес електронної пошти</TextBlock>
+                        </Expander.Header>
+                        <Expander.Content>
+                            <TextBlock TextWrapping="Wrap" TextAlignment="Justify" Padding="4" FontSize="14">
+                                valentynnedelko@gmail.com
+                            </TextBlock>
+                        </Expander.Content>
+                    </Expander>
+                </StackPanel>
+            </TabItem.Content>
+        </TabItem>
+    </TabControl>
+</Window>

@@ -1,0 +1,68 @@
+﻿<Window x:Class="BankruptcyDiagnostics.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankruptcyDiagnostics"
+        mc:Ignorable="d"
+        Title="Bankruptcy Diagnistics"
+        SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Width="150">
+            <Button Height="80" Click="Two_factor_on_Click">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Двофакторна" FontSize="18"/><LineBreak/><Run Text="модель" FontSize="18"/></TextBlock>
+            </Button>
+            <Button Height="80" Click="Altman_on_Click">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Za-показник" FontSize="18"/><LineBreak/><Run Text="Альтмана" FontSize="18"/></TextBlock>
+            </Button>
+            <Button Height="80" Click="Lis_on_Click">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Модель" FontSize="18"/><LineBreak/><Run Text="Ліса" FontSize="18"/></TextBlock>
+            </Button>
+            <Button Height="80" Click="Taffler_on_Click">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Модель" FontSize="18"/><LineBreak/><Run Text="Таффлера" FontSize="18"/></TextBlock>
+            </Button>
+        </StackPanel>
+        <StackPanel Width="225" x:Name ="LogoPanel">
+            <Canvas>
+                <Button Width="90" Canvas.Left="20" Canvas.Top="200" Click="Upload_On_Click">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Завантажити"/><LineBreak/><Run Text="звітність"/></TextBlock>
+                </Button>
+                <Button Width="90" Canvas.Right="20" Canvas.Top="200" Click="Download_Template_On_Click">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Скачати"/><LineBreak/><Run Text="бланк"/></TextBlock>
+                </Button>
+                <Button Width="185" Canvas.Left="20" Canvas.Top="240" Click="Clear_All_on_Click">
+                    <TextBlock TextAlignment="Center">Очистити</TextBlock>
+                </Button>
+                <Button Width="185" Canvas.Left="20" Canvas.Top="265" Click="Open_Instruction_On_Click">
+                    <TextBlock TextAlignment="Center">Довідка</TextBlock>
+                </Button>
+                <Button Width="185" Canvas.Left="20" Canvas.Top="290" Click="Close_App_on_Click">
+                    <TextBlock TextAlignment="Center">Вихід</TextBlock>
+                </Button>
+            </Canvas>
+        </StackPanel>
+        <StackPanel Width="150">
+            <Button Height="80" Click="Beaver_on_Click">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Система" FontSize="18"/><LineBreak/><Run Text="показників" FontSize="18"/><LineBreak/><Run Text="Бівера" FontSize="18"/></TextBlock>
+            </Button>
+            <Button Height="80" Click="Tereshchenko_on_Click">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Дискримінантна" FontSize="18"/><LineBreak/><Run Text="модель" FontSize="18"/><LineBreak/><Run Text="О.О. Терещенка" FontSize="18"/></TextBlock>
+            </Button>
+            <Button Height="80" Click="Springate_on_Click">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Модель" FontSize="18"/><LineBreak/><Run Text="Спрінгейта" FontSize="18"/></TextBlock>
+            </Button>
+            <Button Height="80" Click="Safulin_Kadikov_on_Click">
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center"><Run Text="Модель" FontSize="18"/><LineBreak/><Run Text="Сайфуліна" FontSize="18"/><LineBreak/><Run Text="Кадикова" FontSize="18"/></TextBlock>
+            </Button>
+        </StackPanel>
+        <StackPanel x:Name="DiagPanel" Width="400" Visibility="Collapsed">
+            <ScrollViewer Name="scrollDiag" Height="275">
+            </ScrollViewer>
+            <Grid>
+                <Button Grid.Column="1" Margin="4" Click="Close_Diag_Stack_Panel">
+                    <TextBlock TextAlignment="Center"><Run Text="Закрити" FontSize="18"/></TextBlock>
+                </Button>
+            </Grid>
+        </StackPanel>
+    </StackPanel>
+</Window>
